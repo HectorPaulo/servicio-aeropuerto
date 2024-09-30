@@ -8,7 +8,7 @@ import com.edu.mx.lasalle.oaxaca.servicio_aeropuerto.models.PasajeroModel;
 
 @Service
 public interface PasajeroService {
-    public void registrarPasajero(PasajeroModel pasajeroModel);
+    public PasajeroModel registrarPasajero(PasajeroModel pasajeroModel);
 
     public List<PasajeroModel> obtenerPasajeros();
 

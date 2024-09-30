@@ -3,7 +3,6 @@ package com.edu.mx.lasalle.oaxaca.servicio_aeropuerto.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,16 +23,17 @@ public class PasajeroController {
     private PasajeroService pasajeroService;
 
     @PostMapping("/registro")
-    public customResponse registrarPasajero(PasajeroModel pasajeroModel) {
+    public customResponse registrarPasajero(@RequestBody PasajeroModel pasajeroModel) {
         customResponse customResponse = new customResponse();
-        pasajeroService.registrarPasajero(pasajeroModel);
+        PasajeroModel pasajeroDb = pasajeroService.registrarPasajero(pasajeroModel);
         customResponse.setHttpCode(HttpStatus.CREATED);
         customResponse.setCode(201);
         customResponse.setMessage("Se ha registrado el pasajero");
+        customResponse.setData(pasajeroDb);
         return customResponse;
     }
 
-    @GetMapping("/registros")
+    @GetMapping("/all")
     public ResponseEntity<List<PasajeroModel>> getAllPasajeros() {
         List<PasajeroModel> pasajeros = pasajeroService.obtenerPasajeros();
         if (pasajeros.isEmpty()) {

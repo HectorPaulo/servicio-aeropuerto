@@ -3,18 +3,20 @@ package com.edu.mx.lasalle.oaxaca.servicio_aeropuerto.serviceImplements;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.edu.mx.lasalle.oaxaca.servicio_aeropuerto.models.PasajeroModel;
 import com.edu.mx.lasalle.oaxaca.servicio_aeropuerto.repository.PasajeroRepository;
 import com.edu.mx.lasalle.oaxaca.servicio_aeropuerto.service.PasajeroService;
 
+@Service
 public class PasajeroServiceImplements implements PasajeroService {
     @Autowired
     private PasajeroRepository pasajeroRepository;
 
     @Override
-    public void registrarPasajero(PasajeroModel pasajeroModel) {
-        pasajeroRepository.save(pasajeroModel);
+    public PasajeroModel registrarPasajero(PasajeroModel pasajeroModel) {
+        return pasajeroRepository.save(pasajeroModel);
     }
 
     @Override
