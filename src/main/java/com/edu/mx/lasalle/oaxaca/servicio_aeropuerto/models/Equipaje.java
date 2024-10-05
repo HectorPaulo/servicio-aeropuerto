@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class equipaje {
+public class Equipaje {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
